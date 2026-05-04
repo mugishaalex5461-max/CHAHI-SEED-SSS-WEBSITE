@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - CHAHI SEED SECONDARY SCHOOL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 95, 142, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-icon {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Rotary.jpeg" alt="CHAHI SEED" class="logo-img">
+                <span>CHAHI SEED SECONDARY SCHOOL</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="admissions.html" class="nav-link">Admissions</a>
+                <a href="academics.html" class="nav-link">Academics</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Gallery</h1>
+        <p>Moments from Our School Community</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="gallery-page">
+        <section class="section">
+            <div class="container">
+                <h2>Explore Our Campus & Community</h2>
+                <p>Browse through photos capturing the vibrant life and achievements of our school community, from academics 
+                to sports, cultural events, and campus facilities.</p>
+
+                <!-- Filter Buttons -->
+                <div class="gallery-filter">
+                    <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+                    <button class="filter-btn" onclick="filterGallery('academics')">Academics</button>
+                    <button class="filter-btn" onclick="filterGallery('sports')">Sports</button>
+                    <button class="filter-btn" onclick="filterGallery('events')">Events</button>
+                    <button class="filter-btn" onclick="filterGallery('campus')">Campus</button>
+                    <button class="filter-btn" onclick="filterGallery('culture')">Culture</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="gallery-grid">
+                    <!-- Academics -->
+                    <div class="gallery-item" data-category="academics">
+                        <img src="images.jpeg" alt="Classroom" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="academics">
+                        <img src="images (0).jpeg" alt="Science Lab" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Sports -->
+                    <div class="gallery-item" data-category="sports">
+                        <img src="images (1).jpeg" alt="Sports" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="sports">
+                        <img src="images (2).jpeg" alt="Athletics" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Events -->
+                    <div class="gallery-item" data-category="events">
+                        <img src="images (3).jpeg" alt="Graduation" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="events">
+                        <img src="images (4).jpeg" alt="Prize Giving" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Campus -->
+                    <div class="gallery-item" data-category="campus">
+                        <img src="images (5).jpeg" alt="Campus" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="campus">
+                        <img src="download.jpeg" alt="Dormitory" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Culture -->
+                    <div class="gallery-item" data-category="culture">
+                        <img src="download (1).jpeg" alt="Choir" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="culture">
+                        <img src="download (2).jpeg" alt="Drama" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="academics">
+                        <img src="download (3).jpeg" alt="Computer Lab" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="events">
+                        <img src="download (4).jpeg" alt="Community Service" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="sports">
+                        <img src="download (5).jpeg" alt="Sports Event" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="academics">
+                        <img src="download (6).jpeg" alt="Library" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="campus">
+                        <img src="download (7).jpeg" alt="School Grounds" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="events">
+                        <img src="download (8).jpeg" alt="School Event" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="culture">
+                        <img src="download (9).jpeg" alt="Cultural Activity" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus gallery-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section bg-light">
+            <div class="container text-center">
+                <h2>Want to Experience Our Community?</h2>
+                <p>Visit CHAHI SEED SECONDARY SCHOOL and discover why we're a premier educational institution.</p>
+                <div class="cta-buttons">
+                    <a href="admissions.html" class="btn btn-primary btn-large">Apply Now</a>
+                    <a href="contact.html" class="btn btn-secondary btn-large">Schedule a Visit</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>CHAHI SEED SECONDARY SCHOOL</h3>
+                <p>Kisoro District, Mount Muhabura</p>
+                <p>Uganda</p>
+            </div>
+            <div class="footer-section">
+                <h3>QUICK LINKS</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>CONTACT INFO</h3>
+                <p><i class="fas fa-phone"></i> <a href="tel:+256782797037">+256 782797037</a> (Head Teacher)</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+256775570326">+256 775570326</a> (BARSE)</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+256774455917">+256 774455917</a> (ICT)</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/256782797037" target="_blank" rel="noopener noreferrer">WhatsApp Head Teacher</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:chahiseed@gmail.com">chahiseed@gmail.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>FOLLOW US</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CHAHI SEED SECONDARY SCHOOL. All rights reserved. | Empowering Students. Building Tomorrow's Leaders.</p>
+        </div>
+    </footer>
+
+    <script>
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
